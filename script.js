@@ -25,13 +25,19 @@ fetch(url, options)
   */
 
 async function getStates() {
-  let p = document.getElementById("states");
+  //let p = document.getElementById("states");
+  let div = document.querySelector("#statesDiv");
+  let ul = document.createElement("ul");
+
   const response = await fetch(url, options);
   const data = await response.json();
   for (let i = 0; i < data.length; i++) {
     console.log(`${data[i].name}, ${data[i].postal}`);
-    p.innerHTML += `${data[i].name}, ${data[i].postal}<br>`;
+    let li = document.createElement("li");
+    li.textContent = `${data[i].name}`;
+    ul.appendChild(li);
   }
   //console.log(data);
+  div.append(ul);
 }
 getStates();
