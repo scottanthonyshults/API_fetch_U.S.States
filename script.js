@@ -13,30 +13,21 @@ fetch(url, options)
   .catch((error) => console.log(`Error fetching data: ${error.message}`));
 */
 
-/*
 // working
 fetch(url, options)
   .then(res => {
     return res.json()
   })
   .then(data => {
-    console.log(data)
+    //console.log(data);
+    let div = document.querySelector("#statesDiv");
+    let ul = document.createElement("ul");
+    for (let i = 0; i < data.length; i++) {
+      //console.log(`${data[i].name}, ${data[i].postal}`);
+      let li = document.createElement("li");
+      li.textContent = `${data[i].name}`;
+      ul.appendChild(li);
+      div.append(ul);
+    }
   })
-  */
 
-async function getStates() {
-  let div = document.querySelector("#statesDiv");
-  let ul = document.createElement("ul");
-
-  const response = await fetch(url, options);
-  const data = await response.json();
-  for (let i = 0; i < data.length; i++) {
-    console.log(`${data[i].name}, ${data[i].postal}`);
-    let li = document.createElement("li");
-    li.textContent = `${data[i].name}`;
-    ul.appendChild(li);
-  }
-  //console.log(data);
-  div.append(ul);
-}
-getStates();
