@@ -25,7 +25,6 @@ fetch(url, options)
   */
 
 async function getStates() {
-  //let p = document.getElementById("states");
   let div = document.querySelector("#statesDiv");
   let ul = document.createElement("ul");
 
